@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +7,14 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  title = 'Pokedex App';
+  name = signal('Pikachu');
+  life = signal(21);
+
+  incrementLife() {
+    this.life.update((life) => life + 1);
+  }
+
+  decrementLife() {
+    this.life.update((life) => life - 1);
+  }
 }
