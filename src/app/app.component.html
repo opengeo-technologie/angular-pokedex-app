@@ -1,18 +1,38 @@
 <nav>
   <div class="nav-wrapper teal darken-4">
     <a href="#" class="brand-logo">Pokedex</a>
-    <!-- <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <li><a href="sass.html">Sass</a></li>
-      <li><a href="badges.html">Components</a></li>
-      <li><a href="collapsible.html">JavaScript</a></li>
-    </ul> -->
   </div>
 </nav>
 <div class="container">
   <div class="row">
-    @for (pokemon of pokemonList(); track pokemon.id) {
+    <div class="col s12 m5 offset-m4">
+      <div
+        class="card search-card"
+        style="padding-left: 10px; padding-right: 10px"
+      >
+        <h6>Rechercher un pokemon</h6>
+        <div class="row">
+          <div class="input-field custom-bordered-input col s12">
+            <input
+              id="search"
+              placeholder="Saisir le nom du pokemon"
+              type="text"
+              class="validate"
+              name="searchTerm"
+              #searchField
+              [value]="searchTerm()"
+              (input)="searchTerm.set(searchField.value)"
+            />
+            <!-- <label for="search">Rechercher un pokemon</label> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    @for (pokemon of pokemonListFiltered(); track pokemon.id) {
     <div class="col s12 m4">
-      <div class="card">
+      <div class="card" [appPokemonBorder]="pokemon.types[0]">
         <div class="row">
           <div class="col s12 m4 center-align image-container">
             <img [src]="pokemon.picture" [alt]="pokemon.name" />
@@ -22,7 +42,7 @@
               <h5 class="card-title">{{ pokemon.name }}</h5>
               <h6 class="card-subtitle">Taille: {{ size(pokemon) }}</h6>
 
-              <p>Types: {{ pokemon.types }}</p>
+              <p>{{ pokemon.created | date : "dd/MM/yyyy" }}</p>
               <p>Points de vie: {{ pokemon.life }}</p>
 
               <div class="btn-group">
