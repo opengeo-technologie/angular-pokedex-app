@@ -21,9 +21,7 @@
                 <th scope="row">Types</th>
                 <td>
                   @for(type of pokemon().types; track type) {
-                  <span class="badge rounded-pill bg-secondary me-1">{{
-                    type
-                  }}</span>
+                  <span class="badge grey white-text">{{ type }}</span>
                   }
                 </td>
               </tr>
@@ -46,7 +44,12 @@
             >
               RETOUR
             </button>
-            <button class="btn btn-flat amber-text">ÉDITER</button>
+            <button
+              [routerLink]="['/pokemons/edit', pokemon().id]"
+              class="btn btn-flat amber-text"
+            >
+              ÉDITER
+            </button>
             <button class="btn btn-flat red-text">SUPPRIMER</button>
           </div>
         </div>
