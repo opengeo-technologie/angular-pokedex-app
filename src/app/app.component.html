@@ -1,74 +1,12 @@
 <nav>
   <div class="nav-wrapper teal darken-4">
-    <a href="#" class="brand-logo">Pokedex</a>
+    <!-- <a routerLink="pokemons" class="brand-logo">Pokedex</a> -->
+    <div class="center-align" style="width: 100%">
+      <span routerLink="pokemons" class="brand-logo" style="float: none">
+        Pokedex
+      </span>
+    </div>
   </div>
 </nav>
-<div class="container">
-  <div class="row">
-    <div class="col s12 m5 offset-m4">
-      <div
-        class="card search-card"
-        style="padding-left: 10px; padding-right: 10px"
-      >
-        <h6>Rechercher un pokemon</h6>
-        <div class="row">
-          <div class="input-field custom-bordered-input col s12">
-            <input
-              id="search"
-              placeholder="Saisir le nom du pokemon"
-              type="text"
-              class="validate"
-              name="searchTerm"
-              #searchField
-              [value]="searchTerm()"
-              (input)="searchTerm.set(searchField.value)"
-            />
-            <!-- <label for="search">Rechercher un pokemon</label> -->
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    @for (pokemon of pokemonListFiltered(); track pokemon.id) {
-    <div class="col s12 m4">
-      <div class="card" [appPokemonBorder]="pokemon.types[0]">
-        <div class="row">
-          <div class="col s12 m4 center-align image-container">
-            <img [src]="pokemon.picture" [alt]="pokemon.name" />
-          </div>
-          <div class="col s12 m8">
-            <div class="card-body">
-              <h5 class="card-title">{{ pokemon.name }}</h5>
-              <h6 class="card-subtitle">Taille: {{ size(pokemon) }}</h6>
 
-              <p>{{ pokemon.created | date : "dd/MM/yyyy" }}</p>
-              <p>Points de vie: {{ pokemon.life }}</p>
-
-              <div class="btn-group">
-                <button
-                  class="btn-flat waves-effect red white-text"
-                  (click)="decrementLife(pokemon)"
-                  [disabled]="pokemon.life <= 10"
-                >
-                  -
-                </button>
-                <button
-                  class="btn-flat waves-effect teal white-text"
-                  (click)="incrementLife(pokemon)"
-                  [disabled]="pokemon.life >= 30"
-                >
-                  +
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    } @empty {
-    <p>Aucun pokemon dans la liste</p>
-    }
-  </div>
-</div>
+<router-outlet></router-outlet>

@@ -1,0 +1,22 @@
+.image-container {
+  background-color: "#000000";
+  /* border-right: 2px solid #bdbdbd; */
+}
+
+.image-container img {
+  margin-right: 100px !important;
+}
+
+.card-content {
+  padding-top: 10px;
+  border-left: 2px solid #bdbdbd;
+}
+.card-title {
+  margin-top: 0px;
+  font-weight: bolder;
+}
+
+.btn-flat:hover {
+  background-color: #9e9e9e;
+  color: #ffffff !important;
+}
