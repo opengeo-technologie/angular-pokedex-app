@@ -1,11 +1,10 @@
-.image-container {
+/* .image-container {
   background-color: "#000000";
-  /* border-right: 2px solid #bdbdbd; */
 }
 
 .image-container img {
   margin-right: 100px !important;
-}
+} */
 
 .card-content {
   padding-top: 10px;
@@ -31,6 +30,18 @@ input[type="number"]:focus {
 input[type="checkbox"].filled-in:not(:checked) + span:not(.lever):after {
   height: 14px;
   width: 14px;
+}
+
+[type="checkbox"].filled-in:checked + span:not(.lever):after {
+  height: 14px;
+  width: 14px;
+  border: 2px solid #004d40;
+  background-color: #004d40;
+}
+
+[type="checkbox"].filled-in:checked + span:not(.lever):before {
+  width: 6px;
+  height: 8px;
 }
 
 input[type="checkbox"] + span:not(.lever) {
@@ -80,4 +91,5 @@ input[type="checkbox"] + span:not(.lever) {
 
 .badge {
   border-radius: 10px;
+  margin-right: 4px;
 }

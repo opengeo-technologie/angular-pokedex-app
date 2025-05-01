@@ -7,95 +7,115 @@
       <div class="col s12 m8">
         <div class="card-content">
           <h2 class="card-title">{{ pokemon().name }}</h2>
-          <table class="table">
-            <tbody>
-              <tr>
-                <th scope="row">Nom du pokemon</th>
-                <td>
-                  <div class="styled-number-input col s12">
-                    <input
-                      id="life"
-                      placeholder="Nom du pokemon"
-                      type="text"
-                      [(ngModel)]="name"
-                    />
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Points de vie</th>
-                <td>
-                  <div class="styled-number-input col s12">
-                    <span class="btn-icon" (click)="decrementLife()">−</span>
-                    <input
-                      id="life"
-                      type="number"
-                      [(ngModel)]="life"
-                      [min]="min"
-                      [max]="max"
-                    />
-                    <span class="btn-icon" (click)="incrementLife()">+</span>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Dégâts</th>
-                <td>
-                  <div class="styled-number-input col s12">
-                    <span class="btn-icon" (click)="decrementDamage()">−</span>
-                    <input
-                      id="damage"
-                      type="number"
-                      [(ngModel)]="damage"
-                      [min]="min"
-                      [max]="max"
-                    />
-                    <span class="btn-icon" (click)="incrementDamage()">+</span>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Types</th>
-                <td>
-                  @for(type of pokemon().types; track type) {
-                  <span class="badge grey white-text">{{ type }}</span>
-                  }
-                  <div class="row" style="margin-top: 10px">
-                    @for(type of pokemonTypes(); track type) {
-                    <div class="col s6 m4">
-                      <p>
-                        <label>
-                          <input class="filled-in" type="checkbox" />
-                          <span>{{ type }}</span>
-                        </label>
-                      </p>
+          <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <table class="table">
+              <tbody>
+                <tr>
+                  <th scope="row">Nom du pokemon</th>
+                  <td>
+                    <div class="styled-number-input col s12">
+                      <input
+                        formControlName="name"
+                        id="life"
+                        placeholder="Nom du pokemon"
+                        type="text"
+                      />
                     </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Points de vie</th>
+                  <td>
+                    <div class="styled-number-input col s12">
+                      <span class="btn-icon" (click)="decrementLife()">−</span>
+                      <input
+                        formControlName="life"
+                        id="life"
+                        type="number"
+                        [min]="min"
+                        [max]="max"
+                      />
+                      <span class="btn-icon" (click)="incrementLife()">+</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Dégâts</th>
+                  <td>
+                    <div class="styled-number-input col s12">
+                      <span class="btn-icon" (click)="decrementDamage()"
+                        >−</span
+                      >
+                      <input
+                        formControlName="damage"
+                        id="damage"
+                        type="number"
+                        [min]="min"
+                        [max]="max"
+                      />
+                      <span class="btn-icon" (click)="incrementDamage()"
+                        >+</span
+                      >
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Types</th>
+                  <td>
+                    @for(type of pokemonTypeList.controls; track type; let index
+                    = $index) {
+                    <span
+                      class="badge grey white-text"
+                      (click)="pokemonTypeList.removeAt(index)"
+                      [style.backgroundColor]="getPokemonColor(type.value)"
+                      >{{ type.value }}</span
+                    >
                     }
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <div
-            style="
-              justify-content: space-between;
-              margin-top: 1.5rem;
-              display: flex;
-            "
-          >
-            <button
-              class="btn waves-effect waves-blue btn-flat amber-text"
-              routerLink="/pokemons"
+                    <div class="row" style="margin-top: 10px">
+                      @for(type of pokemonTypes(); track type) {
+                      <div class="col s6 m4">
+                        <p>
+                          <label>
+                            <input
+                              #checkbox
+                              (change)="
+                                onPokemonTypeChange(type, checkbox.checked)
+                              "
+                              [checked]="isPokemonTypeSelected(type)"
+                              class="filled-in"
+                              type="checkbox"
+                            />
+                            <span>{{ type }}</span>
+                          </label>
+                        </p>
+                      </div>
+                      }
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div
+              style="
+                justify-content: space-between;
+                margin-top: 1.5rem;
+                display: flex;
+              "
             >
-              RETOUR
-            </button>
-            <button
-              [routerLink]="['/pokemons/edit', pokemon().id]"
-              class="btn btn-flat amber-text"
-            >
-              Sauvegarder
-            </button>
-          </div>
+              <button
+                class="btn waves-effect waves-blue btn-flat amber-text"
+                routerLink="/pokemons"
+              >
+                RETOUR
+              </button>
+              <button
+                [routerLink]="['/pokemons/edit', pokemon().id]"
+                class="btn btn-flat amber-text"
+              >
+                Sauvegarder
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
