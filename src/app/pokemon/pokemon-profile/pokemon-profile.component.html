@@ -1,33 +1,41 @@
 <div class="container">
+  @if (pokemon(); as pokemon) {
   <div class="card">
     <div class="row">
       <div class="col s12 m4 center-align image-container">
-        <img [src]="pokemon().picture" [alt]="pokemon().name" />
+        <img [src]="pokemon.picture" [alt]="pokemon.name" />
       </div>
       <div class="col s12 m8">
         <div class="card-content">
-          <h2 class="card-title">{{ pokemon().name }}</h2>
+          <h2 class="card-title">{{ pokemon.name }}</h2>
           <table class="table">
             <tbody>
               <tr>
                 <th scope="row">Points de vie</th>
-                <td>{{ pokemon().life }}</td>
+                <td>{{ pokemon.life }}</td>
               </tr>
               <tr>
                 <th scope="row">Dégâts</th>
-                <td>{{ pokemon().damage }}</td>
+                <td>{{ pokemon.damage }}</td>
               </tr>
               <tr>
                 <th scope="row">Types</th>
                 <td>
-                  @for(type of pokemon().types; track type) {
-                  <span class="badge grey white-text">{{ type }}</span>
+                  @for(type of pokemon.types; track type) {
+                  <span
+                    class="badge grey white-text"
+                    [style.backgroundColor]="getPokemonColor(type!)"
+                    [style.color]="
+                      type == 'Electrik' ? 'black !important' : 'white'
+                    "
+                    >{{ type }}</span
+                  >
                   }
                 </td>
               </tr>
               <tr>
                 <th scope="row">Date de création</th>
-                <td>{{ pokemon().created | date : "dd/MM/yyyy" }}</td>
+                <td>{{ pokemon.created | date : "dd/MM/yyyy" }}</td>
               </tr>
             </tbody>
           </table>
@@ -45,7 +53,7 @@
               RETOUR
             </button>
             <button
-              [routerLink]="['/pokemons/edit', pokemon().id]"
+              [routerLink]="['/pokemons/edit', pokemon.id]"
               class="btn btn-flat amber-text"
             >
               ÉDITER
@@ -56,4 +64,76 @@
       </div>
     </div>
   </div>
+  }@if (loading()) {
+  <div class="col s12 center-align">
+    <div class="preloader-wrapper big active">
+      <div class="spinner-layer spinner-blue">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div>
+        <div class="gap-patch">
+          <div class="circle"></div>
+        </div>
+        <div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-red">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div>
+        <div class="gap-patch">
+          <div class="circle"></div>
+        </div>
+        <div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-yellow">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div>
+        <div class="gap-patch">
+          <div class="circle"></div>
+        </div>
+        <div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-green">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div>
+        <div class="gap-patch">
+          <div class="circle"></div>
+        </div>
+        <div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  } @if(error()) {
+  <div class="container center-align">
+    <div class="card">
+      <div class="card-body">
+        <img
+          src="http://assets.pokemon.com/assets/cms2/img/pokedex/full/035.png"
+          class="img-fluid mx-auto d-block"
+          alt="Rondoudou"
+        />
+        <h2>Hey, ce Pokémon n'existe pas !</h2>
+        <a
+          routerLink="/pokemons"
+          class="btn btn-link mt-3 text-decoration-none"
+        >
+          RETOURNER À L'ACCUEIL</a
+        >
+      </div>
+    </div>
+  </div>
+  }
 </div>

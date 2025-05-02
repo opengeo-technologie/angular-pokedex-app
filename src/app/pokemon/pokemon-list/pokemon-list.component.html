@@ -25,8 +25,65 @@
     </div>
   </div>
   <div class="row">
-    @for (pokemon of pokemonListFiltered(); track pokemon.id) {
-    <div class="col s12 m4">
+    @if (loading()) {
+    <div class="col s12 center-align">
+      <div class="preloader-wrapper big active">
+        <div class="spinner-layer spinner-blue">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div>
+          <div class="gap-patch">
+            <div class="circle"></div>
+          </div>
+          <div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+
+        <div class="spinner-layer spinner-red">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div>
+          <div class="gap-patch">
+            <div class="circle"></div>
+          </div>
+          <div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+
+        <div class="spinner-layer spinner-yellow">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div>
+          <div class="gap-patch">
+            <div class="circle"></div>
+          </div>
+          <div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+
+        <div class="spinner-layer spinner-green">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div>
+          <div class="gap-patch">
+            <div class="circle"></div>
+          </div>
+          <div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    } @for (pokemon of pokemonListFiltered(); track pokemon.id) {
+    <div
+      class="col s12 m4"
+      [routerLink]="['/pokemons', pokemon.id]"
+      style="cursor: pointer"
+    >
       <div class="card" [appPokemonBorder]="pokemon.types[0]">
         <div class="row">
           <div class="col s12 m4 center-align image-container">
@@ -39,32 +96,13 @@
 
               <p>{{ pokemon.created | date : "dd/MM/yyyy" }}</p>
               <p>Points de vie: {{ pokemon.life }}</p>
-
-              <div class="btn-group">
-                <button
-                  class="btn-flat waves-effect red white-text"
-                  (click)="decrementLife(pokemon)"
-                  [disabled]="pokemon.life <= 10"
-                >
-                  -
-                </button>
-                <button
-                  class="btn-flat waves-effect teal white-text"
-                  (click)="incrementLife(pokemon)"
-                  [disabled]="pokemon.life >= 30"
-                >
-                  +
-                </button>
-              </div>
-              <p><a [routerLink]="['/pokemons', pokemon.id]">VOIR</a></p>
+              <p>Dégâts: {{ pokemon.damage }}</p>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    } @empty {
-    <p>Aucun pokemon dans la liste</p>
     }
   </div>
 </div>

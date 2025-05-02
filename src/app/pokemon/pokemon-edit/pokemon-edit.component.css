@@ -92,4 +92,5 @@ input[type="checkbox"] + span:not(.lever) {
 .badge {
   border-radius: 10px;
   margin-right: 4px;
+  cursor: pointer;
 }

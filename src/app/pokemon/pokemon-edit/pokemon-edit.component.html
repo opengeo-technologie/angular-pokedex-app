@@ -1,12 +1,13 @@
 <div class="container">
+  @if (pokemon(); as pokemon) {
   <div class="card">
     <div class="row">
       <div class="col s12 m4 center-align image-container">
-        <img [src]="pokemon().picture" [alt]="pokemon().name" />
+        <img [src]="pokemon.picture" [alt]="pokemon.name" />
       </div>
       <div class="col s12 m8">
         <div class="card-content">
-          <h2 class="card-title">{{ pokemon().name }}</h2>
+          <h2 class="card-title">{{ pokemon.name }}</h2>
           <form [formGroup]="form" (ngSubmit)="onSubmit()">
             <table class="table">
               <tbody>
@@ -16,11 +17,50 @@
                     <div class="styled-number-input col s12">
                       <input
                         formControlName="name"
-                        id="life"
+                        id="name_pk"
                         placeholder="Nom du pokemon"
                         type="text"
                       />
                     </div>
+                    @if (pokemonName.hasError('required')) {
+                    <span
+                      class="helper-text red-text"
+                      style="font-size: 12px"
+                      data-error="wrong"
+                      data-success="right"
+                    >
+                      Veuillez renseigner ce champ.
+                    </span>
+                    } @if (pokemonName.hasError('minlength')) {
+                    <span
+                      class="helper-text red-text"
+                      style="font-size: 12px"
+                      data-error="wrong"
+                      data-success="right"
+                    >
+                      Veuillez saisir un nom plus long. (Minimum:
+                      {{ pokemonName.getError("minlength").requiredLength }}).
+                    </span>
+                    } @if (pokemonName.hasError('maxlength')) {
+                    <span
+                      class="helper-text red-text"
+                      style="font-size: 12px"
+                      data-error="wrong"
+                      data-success="right"
+                    >
+                      Veuillez saisir un nom plus court. (Maximum:
+                      {{ pokemonName.getError("maxlength").requiredLength }}).
+                    </span>
+                    } @if (pokemonName.hasError('pattern')) {
+                    <span
+                      class="helper-text red-text"
+                      style="font-size: 12px"
+                      data-error="wrong"
+                      data-success="right"
+                    >
+                      Veuillez saisir uniquement des lettres.
+                    </span>
+                    }
                   </td>
                 </tr>
                 <tr>
@@ -32,8 +72,7 @@
                         formControlName="life"
                         id="life"
                         type="number"
-                        [min]="min"
-                        [max]="max"
+                        readonly
                       />
                       <span class="btn-icon" (click)="incrementLife()">+</span>
                     </div>
@@ -50,8 +89,7 @@
                         formControlName="damage"
                         id="damage"
                         type="number"
-                        [min]="min"
-                        [max]="max"
+                        readonly
                       />
                       <span class="btn-icon" (click)="incrementDamage()"
                         >+</span
@@ -68,8 +106,21 @@
                       class="badge grey white-text"
                       (click)="pokemonTypeList.removeAt(index)"
                       [style.backgroundColor]="getPokemonColor(type.value)"
+                      [style.color]="
+                        type.value == 'Electrik' ? 'black !important' : 'white'
+                      "
                       >{{ type.value }}</span
                     >
+                    } @if (pokemonTypeList.hasError('required')) {
+                    <p class="red-text">
+                      Veuillez selectionner au moins un type pour un pokemon
+                    </p>
+                    } @if (pokemonTypeList.hasError('maxlength')) {
+                    <p class="red-text">
+                      Veuillez selectionner au maximum
+                      {{ pokemonTypeList.getError("maxlength").requiredLength }}
+                      types pour un pokemon
+                    </p>
                     }
                     <div class="row" style="margin-top: 10px">
                       @for(type of pokemonTypes(); track type) {
@@ -109,8 +160,10 @@
                 RETOUR
               </button>
               <button
-                [routerLink]="['/pokemons/edit', pokemon().id]"
+                [routerLink]="['/pokemons/edit', pokemon.id]"
                 class="btn btn-flat amber-text"
+                type="submit"
+                [disabled]="form.invalid"
               >
                 Sauvegarder
               </button>
@@ -120,4 +173,73 @@
       </div>
     </div>
   </div>
+  } @if (loading()) {
+  <div class="col s12 center-align">
+    <div class="preloader-wrapper big active">
+      <div class="spinner-layer spinner-blue">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div>
+        <div class="gap-patch">
+          <div class="circle"></div>
+        </div>
+        <div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-red">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div>
+        <div class="gap-patch">
+          <div class="circle"></div>
+        </div>
+        <div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-yellow">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div>
+        <div class="gap-patch">
+          <div class="circle"></div>
+        </div>
+        <div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-green">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div>
+        <div class="gap-patch">
+          <div class="circle"></div>
+        </div>
+        <div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  } @if(error()) {
+  <div class="container center-align">
+    <div class="card">
+      <div class="card-body">
+        <img
+          src="http://assets.pokemon.com/assets/cms2/img/pokedex/full/035.png"
+          class="img-fluid mx-auto d-block"
+          alt="Rondoudou"
+        />
+        <h2>Hey, ce Pokémon n'existe pas !</h2>
+        <a routerLink="/pokemons" class="btn btn-link text-decoration-none">
+          RETOURNER À L'ACCUEIL</a
+        >
+      </div>
+    </div>
+  </div>
+  }
 </div>
