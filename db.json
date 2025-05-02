@@ -47,18 +47,6 @@
       "created": "2024-08-16T00:00:00Z"
     },
     {
-      "id": "5",
-      "name": "Roucool",
-      "life": 30,
-      "damage": 7,
-      "picture": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/016.png",
-      "types": [
-        "Normal",
-        "Vol"
-      ],
-      "created": "2024-08-16T00:00:00Z"
-    },
-    {
       "id": "6",
       "name": "Rattata",
       "life": 18,
@@ -135,6 +123,29 @@
         "Feu"
       ],
       "created": "2024-08-16T00:00:00Z"
+    },
+    {
+      "id": "13",
+      "name": "Raichu",
+      "picture": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/026.png",
+      "life": 26,
+      "damage": 10,
+      "types": [
+        "Electrik",
+        "Normal"
+      ],
+      "created": "2025-05-02T19:19:22.697Z"
+    },
+    {
+      "id": "14",
+      "name": "Sablaireau",
+      "picture": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/028.png",
+      "life": 20,
+      "damage": 8,
+      "types": [
+        "Normal"
+      ],
+      "created": "2025-05-02T19:47:20.062Z"
     }
   ]
 }

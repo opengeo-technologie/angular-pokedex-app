@@ -1,5 +1,5 @@
 import { Component, computed, inject, signal } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { PokemonService } from '../../services/pokemon.service';
 import { DatePipe } from '@angular/common';
 import { getPokemonColor } from '../../models/pokemon.model';
@@ -14,6 +14,7 @@ import { map, catchError, of } from 'rxjs';
 })
 export class PokemonProfileComponent {
   readonly #route = inject(ActivatedRoute);
+  readonly #router = inject(Router);
   readonly #pokemonService = inject(PokemonService);
 
   readonly #pokemonId = Number(this.#route.snapshot.paramMap.get('id'));
@@ -24,9 +25,6 @@ export class PokemonProfileComponent {
       catchError((error) => of({ value: undefined, error }))
     )
   );
-  // readonly pokemon = toSignal(
-  //   this.#pokemonService.getPokemonById(this.#pokemonId)
-  // );
 
   readonly pokemon = computed(() => this.pokemonResponse()?.value);
   readonly loading = computed(() => !this.pokemonResponse());
@@ -34,5 +32,11 @@ export class PokemonProfileComponent {
 
   getPokemonColor(type: string) {
     return getPokemonColor(type) + ' !important';
+  }
+
+  deletePokemon() {
+    this.#pokemonService.deletePokemon(this.#pokemonId).subscribe(() => {
+      this.#router.navigate(['/pokemons']);
+    });
   }
 }

@@ -58,7 +58,9 @@
             >
               ÉDITER
             </button>
-            <button class="btn btn-flat red-text">SUPPRIMER</button>
+            <button class="btn btn-flat red-text" (click)="deletePokemon()">
+              SUPPRIMER
+            </button>
           </div>
         </div>
       </div>
@@ -126,10 +128,7 @@
           alt="Rondoudou"
         />
         <h2>Hey, ce Pokémon n'existe pas !</h2>
-        <a
-          routerLink="/pokemons"
-          class="btn btn-link mt-3 text-decoration-none"
-        >
+        <a routerLink="/pokemons" class="btn btn-link text-decoration-none">
           RETOURNER À L'ACCUEIL</a
         >
       </div>

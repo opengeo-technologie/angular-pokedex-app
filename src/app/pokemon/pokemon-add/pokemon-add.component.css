@@ -1,0 +1,96 @@
+/* .image-container {
+  background-color: "#000000";
+}
+
+.image-container img {
+  margin-right: 100px !important;
+} */
+
+.card-content {
+  padding-top: 10px;
+  border-left: 2px solid #bdbdbd;
+}
+
+.card-title {
+  margin-top: 0px;
+  font-weight: bolder;
+}
+
+.btn-flat:hover {
+  background-color: #9e9e9e;
+  color: #ffffff !important;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+input[type="checkbox"].filled-in:not(:checked) + span:not(.lever):after {
+  height: 14px;
+  width: 14px;
+}
+
+[type="checkbox"].filled-in:checked + span:not(.lever):after {
+  height: 14px;
+  width: 14px;
+  border: 2px solid #004d40;
+  background-color: #004d40;
+}
+
+[type="checkbox"].filled-in:checked + span:not(.lever):before {
+  width: 6px;
+  height: 8px;
+}
+
+input[type="checkbox"] + span:not(.lever) {
+  padding-left: 18px;
+  height: 25px;
+  line-height: 14px;
+  color: #1e1d1d;
+}
+
+.styled-number-input {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  overflow: hidden;
+  width: 100px;
+}
+
+.styled-number-input input {
+  border: none;
+  text-align: center;
+  width: 100%;
+  height: auto;
+  padding: 0.5rem 0;
+  margin-bottom: 0px !important;
+  font-size: 1rem;
+  outline: none;
+}
+
+.styled-number-input .btn-icon {
+  background-color: #eee;
+  padding: 0.5rem 0.5rem;
+  height: 20px;
+  cursor: pointer;
+  user-select: none;
+  font-size: 1rem;
+  color: #333;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  justify-content: center;
+}
+
+.styled-number-input .btn-icon:hover {
+  background-color: #ddd;
+}
+
+.badge {
+  border-radius: 10px;
+  margin-right: 4px;
+  cursor: pointer;
+}
