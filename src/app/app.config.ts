@@ -12,7 +12,7 @@ import { PokemonAddComponent } from './pokemon/pokemon-add/pokemon-add.component
 const routes: Routes = [
   {
     path: 'pokemons',
-    // canActivateChild: [AuthGuard],
+    canActivateChild: [AuthGuard],
     children: [
       {
         path: '',

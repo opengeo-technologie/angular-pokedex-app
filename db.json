@@ -6,10 +6,7 @@
       "life": 25,
       "damage": 5,
       "picture": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png",
-      "types": [
-        "Plante",
-        "Poison"
-      ],
+      "types": ["Plante", "Poison"],
       "created": "2024-08-16T00:00:00Z"
     },
     {
@@ -18,9 +15,7 @@
       "life": 28,
       "damage": 6,
       "picture": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/004.png",
-      "types": [
-        "Feu"
-      ],
+      "types": ["Feu"],
       "created": "2024-08-16T00:00:00Z"
     },
     {
@@ -29,9 +24,7 @@
       "life": 21,
       "damage": 4,
       "picture": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/007.png",
-      "types": [
-        "Eau"
-      ],
+      "types": ["Eau"],
       "created": "2024-08-16T00:00:00Z"
     },
     {
@@ -40,10 +33,16 @@
       "life": 16,
       "damage": 2,
       "picture": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/013.png",
-      "types": [
-        "Insecte",
-        "Poison"
-      ],
+      "types": ["Insecte", "Poison"],
+      "created": "2024-08-16T00:00:00Z"
+    },
+    {
+      "id": "5",
+      "name": "Roucool",
+      "life": 30,
+      "damage": 7,
+      "picture": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/016.png",
+      "types": ["Normal", "Vol"],
       "created": "2024-08-16T00:00:00Z"
     },
     {
@@ -52,9 +51,7 @@
       "life": 18,
       "damage": 6,
       "picture": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/019.png",
-      "types": [
-        "Normal"
-      ],
+      "types": ["Normal"],
       "created": "2024-08-16T00:00:00Z"
     },
     {
@@ -63,10 +60,7 @@
       "life": 14,
       "damage": 5,
       "picture": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/021.png",
-      "types": [
-        "Normal",
-        "Vol"
-      ],
+      "types": ["Normal", "Vol"],
       "created": "2024-08-16T00:00:00Z"
     },
     {
@@ -75,9 +69,7 @@
       "life": 16,
       "damage": 4,
       "picture": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/023.png",
-      "types": [
-        "Poison"
-      ],
+      "types": ["Poison"],
       "created": "2024-08-16T00:00:00Z"
     },
     {
@@ -86,9 +78,7 @@
       "life": 21,
       "damage": 7,
       "picture": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/025.png",
-      "types": [
-        "Electrik"
-      ],
+      "types": ["Electrik"],
       "created": "2024-08-16T00:00:00Z"
     },
     {
@@ -97,9 +87,7 @@
       "life": 19,
       "damage": 3,
       "picture": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/027.png",
-      "types": [
-        "Normal"
-      ],
+      "types": ["Normal"],
       "created": "2024-08-16T00:00:00Z"
     },
     {
@@ -108,9 +96,7 @@
       "life": 25,
       "damage": 5,
       "picture": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/035.png",
-      "types": [
-        "Fée"
-      ],
+      "types": ["Fée"],
       "created": "2024-08-16T00:00:00Z"
     },
     {
@@ -119,9 +105,7 @@
       "life": 17,
       "damage": 8,
       "picture": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/037.png",
-      "types": [
-        "Feu"
-      ],
+      "types": ["Feu"],
       "created": "2024-08-16T00:00:00Z"
     },
     {
@@ -130,10 +114,7 @@
       "picture": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/026.png",
       "life": 26,
       "damage": 10,
-      "types": [
-        "Electrik",
-        "Normal"
-      ],
+      "types": ["Electrik", "Normal"],
       "created": "2025-05-02T19:19:22.697Z"
     },
     {
@@ -142,10 +123,53 @@
       "picture": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/028.png",
       "life": 20,
       "damage": 8,
-      "types": [
-        "Normal"
-      ],
+      "types": ["Normal"],
       "created": "2025-05-02T19:47:20.062Z"
+    },
+    {
+      "id": "15",
+      "name": "Nidoran",
+      "picture": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/029.png",
+      "life": 23,
+      "damage": 7,
+      "types": ["Poison"],
+      "created": "2025-05-02T20:39:30.355Z"
+    },
+    {
+      "id": "16",
+      "name": "Nidorina",
+      "picture": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/030.png",
+      "life": 25,
+      "damage": 7,
+      "types": ["Poison"],
+      "created": "2025-05-03T05:59:30.401Z"
+    },
+    {
+      "id": "17",
+      "name": "Nidoqueen",
+      "picture": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/031.png",
+      "life": 20,
+      "damage": 8,
+      "types": ["Normal", "Poison"],
+      "created": "2025-05-03T19:14:48.514Z"
+    },
+    {
+      "id": "18",
+      "name": "Mélodelfe",
+      "picture": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/036.png",
+      "life": 24,
+      "damage": 7,
+      "types": ["Fée"],
+      "created": "2025-05-03T21:09:20.503Z"
+    },
+    {
+      "id": "1932",
+      "name": "Feunard",
+      "picture": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/038.png",
+      "life": 28,
+      "damage": 9,
+      "types": ["Feu"],
+      "created": "2025-05-03T21:11:25.702Z"
     }
   ]
 }
