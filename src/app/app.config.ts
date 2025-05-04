@@ -8,6 +8,17 @@ import { provideHttpClient } from '@angular/common/http';
 import { AuthGuard } from './core/auth/auth.guard';
 import { LoginComponent } from './login/login.component';
 import { PokemonAddComponent } from './pokemon/pokemon-add/pokemon-add.component';
+import { environment } from '../environments/environment';
+import { PokemonJSONServerService } from './services/pokemon-json-server.service';
+import { PokemonLocalStorageService } from './services/pokemon-local-storage.service';
+import { PokemonService } from './services/pokemon.service';
+
+export function pokemonServiceFactory(): PokemonService {
+  // console.log(environment.production);
+  return environment.production
+    ? new PokemonLocalStorageService()
+    : new PokemonJSONServerService();
+}
 
 const routes: Routes = [
   {
@@ -50,5 +61,9 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideHttpClient(),
+    {
+      provide: PokemonService,
+      useFactory: pokemonServiceFactory,
+    },
   ],
 };
